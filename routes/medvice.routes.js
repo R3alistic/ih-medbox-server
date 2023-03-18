@@ -12,7 +12,7 @@ router.get("/medication", async (req, res) => {
   }
 });
 
-router.post("/medication/add", async (req, res) => {
+router.post("/medication/add", isAuthenticated, async (req, res) => {
   try {
     const { name, quantity, purpose, usage, dosage, expiryDate, otherInfo } = req.body;
     if (!name || !quantity || !purpose || !usage || !dosage || !expiryDate) {
